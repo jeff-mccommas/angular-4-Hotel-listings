@@ -1,0 +1,143 @@
+
+<div class="card">
+  <div class="card-header display-header paddingleft10">
+    {{ hotelInfo?.name }}<app-star-rating></app-star-rating>
+  </div>
+  <div class="card-body padding10">
+    <p class="card-text">{{hotelInfo?.description}}</p>
+  <h5>This hotel offers the following services:</h5>
+  <br>
+  <div class="card" style="width: 20rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item hotel-link"*ngFor="let service of hotelInfo?.services">{{service}}</li>
+    </ul>
+  </div>
+  <br />
+  <h3>Reviews</h3>
+  <hr />
+  <ul class="list-unstyled">
+    <li *ngFor="let review of hotelInfo?.reviews"> <strong>{{ review?.name }} says:</strong> {{ review?.review }}</li>
+  </ul>
+  <h3>Events</h3>
+  <hr />
+  <ul>
+    <li *ngFor="let event of hotelInfo?.events"> <strong>{{ event?.eventName }} of:</strong> {{ event?.company }}
+      <p>{{ event?.Description }} </p>
+    </li>
+  </ul>
+  <h3>Photos</h3>
+  <hr />
+  <div class="row">
+    
+           <div class="col-md-3">
+    
+               <h3>Select files</h3>
+    
+               <div ng2FileDrop
+                    [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+                    (fileOver)="fileOverBase($event)"
+                    [uploader]="uploader"
+                    class="well my-drop-zone">
+                   Base drop zone
+               </div> 
+    
+               OR
+               <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+           </div>
+    
+           <div class="col-md-9" style="margin-bottom: 40px">
+    
+               <h3>Upload queue</h3>
+               <p>Queue length: {{ uploader?.queue?.length }}</p>
+    
+               <table class="table">
+                   <thead>
+                   <tr>
+                       <th width="50%">Name</th>
+                       <th>Size</th>
+                       <th>Progress</th>
+                       <th>Status</th>
+                       <th>Actions</th>
+                   </tr>
+                   </thead>
+                   <tbody>
+                   <tr *ngFor="let item of uploader.queue">
+                       <td><strong>{{ item?.file?.name }}</strong></td>
+                       <td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+                       <td *ngIf="uploader.isHTML5">
+                           <div class="progress" style="margin-bottom: 0;">
+                               <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                           </div>
+                       </td>
+                       <td class="text-center">
+                           <span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                           <span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                           <span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                       </td>
+                       <td nowrap>
+                           <button type="button" class="btn btn-success btn-xs"
+                                   (click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
+                               <span class="glyphicon glyphicon-upload"></span> Upload
+                           </button>
+                           <button type="button" class="btn btn-warning btn-xs"
+                                   (click)="item.cancel()" [disabled]="!item.isUploading">
+                               <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                           </button>
+                           <button type="button" class="btn btn-danger btn-xs"
+                                   (click)="item.remove()">
+                               <span class="glyphicon glyphicon-trash"></span> Remove
+                           </button>
+                       </td>
+                   </tr>
+                   </tbody>
+               </table>
+    
+               <div>
+                   <div>
+                       Progress:
+                       <div class="progress" style="">
+                           <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+                       </div>
+                   </div>
+                   <br/>
+                   <button type="button" class="btn btn-success btn-s"
+                           (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                       <span class="glyphicon glyphicon-upload"></span> Upload all
+                   </button>
+                   <button type="button" class="btn btn-warning btn-s"
+                           (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+                       <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                   </button>
+                   <button type="button" class="btn btn-danger btn-s"
+                           (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                       <span class="glyphicon glyphicon-trash"></span> Remove all
+                   </button>
+               </div>
+    
+           </div>
+    
+       </div>
+
+  <br/>
+  <br/>
+  <ul class="list-inline ">
+    <li style="display: inline-block; float: left" *ngFor="let photo of hotelInfo?.photos; let i = index" (mouseenter) ="current = i" (mouseleave) ="current = -1">
+      <i class="fa fa-trash removeimage" *ngIf="current == i" (click)="deleteImage(i)"></i>
+      <img src="http://localhost:3000/{{photo}}" class="img-thumbnail img-responsive img" width="300" alt="">
+    </li>
+  </ul>
+</div>
+<br/>
+<ngb-tabset>
+    <ngb-tab title="Add hotel review">
+      <ng-template ngbTabContent>
+          <app-review (childEvent)="reloadHotelInfo()"></app-review>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Add hotel event">
+      <ng-template ngbTabContent>
+          <app-event (childEvent)="reloadHotelInfo()"></app-event>
+      </ng-template>
+    </ngb-tab>
+  </ngb-tabset>
+</div>

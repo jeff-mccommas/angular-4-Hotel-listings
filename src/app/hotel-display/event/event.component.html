@@ -1,0 +1,189 @@
+<form novalidate
+(ngSubmit)="save()"
+[formGroup]="eventForm" #formDir="ngForm"
+class="form-group padding10">
+<div class="form-group">
+   <label for="eventName" class=" col-md-6 control-label">EventName</label>
+   <input
+      class="col-md-6 form-control"
+      type="text"
+      id="eventName"
+      name="eventName"
+      placeholder="Event Name"
+      formControlName="eventName">
+   <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)"
+      class="alert alert-danger col-md-6">
+      <div *ngIf="eventName.hasError('required')">
+         Event Name is required.
+      </div>
+      <div *ngIf="eventName.hasError('minlength')">
+         Event Name must be at least 4 characters long.
+      </div>
+   </div>
+</div>
+<!--eventDesc form-->
+<div class="form-group">
+   <label for="Description" class=" col-md-8 control-label"> Event Description</label>
+   <textarea
+      class="form-control col-md-12"
+      id="Description"
+      rows="5"
+      cols="60"
+      name="Description"
+      placeholder="Event Description"
+      formControlName="Description">
+   </textarea>
+  
+  <div *ngIf="eventName.invalid && (eventName.dirty || eventName.touched)"
+       class="alert alert-danger col-md-6">
+    <div *ngIf="eventName.hasError('required')">
+      Event Name is required.
+    </div>
+    <div *ngIf="eventName.hasError('minlength')">
+      Event Name must be at least 4 characters long.
+    </div>
+  </div>
+  
+</div>
+<div class="form-group">
+        <label for="company" class=" col-md-6 control-label">Company</label>
+        <input
+           class="col-md-6 form-control"
+           type="text"
+           id="company"
+           name="company"
+           placeholder="Company Name"
+           formControlName="company">
+        <div *ngIf="company.invalid && (company.dirty || company.touched)"
+           class="alert alert-danger col-md-6">
+           <div *ngIf="company.hasError('required')">
+                Company is required.
+           </div>
+        </div>
+     </div>
+     <div class="form-group">
+            <label for="email" class=" col-md-6 control-label">Email</label>
+            <input
+               class="col-md-6 form-control"
+               type="text"
+               id="email"
+               name="email"
+               placeholder="Email Address"
+               formControlName="email">
+            <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger col-md-6">
+               <div *ngIf="email.hasError('required')">
+                    Email is required.
+               </div>
+            </div>
+         </div>
+    <div class="form-group">
+        <label for="rooms" class=" col-md-2 control-label">Number of Rooms</label>
+        <input
+            class="col-md-2 form-control"
+            type="number"
+            id="rooms"
+            name="rooms"
+            placeholder="Number of rooms"
+            formControlName="rooms">
+        <div *ngIf="rooms.invalid && (rooms.dirty || rooms.touched)"
+            class="alert alert-danger col-md-2">
+            <div *ngIf="rooms.hasError('required')">
+                Number of rooms is required.
+            </div>
+        </div>
+        </div>
+        <div class="form-group">
+                <label for="capacity" class=" col-md-2 control-label">Capacity</label>
+                <input
+                    class="col-md-2 form-control"
+                    type="number"
+                    id="capacity"
+                    name="capacity"
+                    placeholder="Capacity"
+                    formControlName="capacity">
+                <div *ngIf="capacity.invalid && (capacity.dirty || capacity.touched)"
+                    class="alert alert-danger col-md-2">
+                    <div *ngIf="capacity.hasError('required')">
+                            Capacity is required.
+                    </div>
+                </div>
+                </div>
+<div class="form-group">
+   <label for="inputAddress" class="col-form-label">Address</label>
+   <input
+   class="col-md-6 form-control"
+   type="text"
+   id="inputAddress"
+   name="inputAddress"
+   placeholder="1234 Main St"
+   formControlName="inputAddress">
+   <div *ngIf="inputAddress.invalid && (inputAddress.dirty || inputAddress.touched)"
+      class="alert alert-danger col-md-6">
+      <div *ngIf="inputAddress.hasError('required')">
+         Address is required.
+      </div>
+      <div *ngIf="inputAddress.hasError('minlength')">
+         Address must be at least 4 characters long.
+      </div>
+   </div>
+</div>
+   <div class="form-group col-md-6">
+      <label for="inputCity" class="col-form-label">City</label>
+      <input
+      class="col-md-6 form-control"
+      type="text"
+      id="inputCity"
+      name="inputCity"
+      placeholder="1234 Main St"
+      formControlName="inputCity">
+      <div *ngIf="inputCity.invalid && (inputCity.dirty || inputCity.touched)"
+         class="alert alert-danger col-md-6">
+         <div *ngIf="inputCity.hasError('required')">
+            City is required.
+         </div>
+      </div>
+   </div>
+   <div class="form-group col-md-4">
+      <label for="inputState" class="col-form-label">State</label>
+      <input type="text" class="form-control" id="inputState">
+      <div *ngIf="inputState.invalid && (inputState.dirty || inputState.touched)"
+         class="alert alert-danger col-md-6">
+         <div *ngIf="inputState.hasError('required')">
+            State is required.
+         </div>
+      </div>
+   </div>
+   <div class="form-group col-md-4">
+      <label for="inputZip" class="col-form-label">Zip</label>
+      <input
+      class="col-md-6 form-control"
+      type="text"
+      id="inputZip"
+      name="inputZip"
+      placeholder="23101"
+      formControlName="inputZip">
+      <div *ngIf="inputZip.invalid && (inputZip.dirty || inputZip.touched)"
+         class="alert alert-danger col-md-6">
+         <div *ngIf="inputZip.hasError('required')">
+            Zip is required.
+         </div>
+         <div *ngIf="inputZip.hasError('minlength')">
+            Name must be at least 5 characters long.
+         </div>
+      </div>
+   </div>
+<div class="form-group">
+   <div class="col-md-4 col-md-offset-2">
+      <span>
+      <button class="btn btn-primary"
+         type="submit"
+         >
+      Submit
+      </button>
+      </span>
+      <span>
+      </span>
+   </div>
+</div>
+</form>

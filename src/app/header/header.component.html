@@ -1,0 +1,38 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse ">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarColor01"
+          aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand"  [routerLink]="['/Home']">MEAN STACK</a>
+  
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto justify-content-center" *ngIf="isLoggedIn$ | async; else notloggedin">
+      <li class="nav-item">
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/HotelListings']">Hotel listings</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto justify-content-center" *ngIf="isLoggedIn$ | async;">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img alt="" class="img-circle" src="https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png" width="30">
+          Welcome {{isLoggedInUser$ | async}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" [routerLink]="['/newListing']">Add HotelListing</a>
+          
+          <a class="dropdown-item" (click)="logout()">Logout</a>
+        </div>
+      </li>
+    </ul>
+    <ng-template #notloggedin>
+      <ul class="navbar-nav mr-auto" >
+        <li class="nav-item">
+        </li>
+      </ul>
+      <app-header-login></app-header-login>
+    </ng-template>
+  </div>
+</nav>
+

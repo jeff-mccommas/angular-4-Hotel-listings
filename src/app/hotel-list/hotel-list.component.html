@@ -1,0 +1,14 @@
+<div *ngIf="!isloggedIn" class="alert alert-danger" role="alert">
+  you must be logged in to view this page!
+</div>
+  <div class="card">
+    <div class="card-body">
+      <div class="card" style="width: 20rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item hotel-link" (click)="getHotelDetails(hotel)" *ngFor="let hotel of hotels">{{ hotel.name }}</li>
+        </ul>
+      </div>
+    </div>
+ 
+    
+</div>

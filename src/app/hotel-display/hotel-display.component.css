@@ -1,0 +1,27 @@
+.card-header{
+  padding: 0;
+  height: 50px;
+  font-size: 18px;
+
+}
+.padding10{
+  padding: 10px
+}
+.paddingleft10{
+  padding-left: 10px
+}
+.my-drop-zone { border: dotted 3px lightgray; height: 100px; text-align: center }
+.nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+.another-file-over-class { border: dotted 3px green; }
+.removeimage{
+  position: absolute;
+  font-size: 30px;
+  color: #b20000;
+  margin-left: 251px;
+  margin-top: 8px;
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  border: 1px solid #b20000;
+  cursor: pointer;
+}

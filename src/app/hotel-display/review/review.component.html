@@ -1,0 +1,94 @@
+<form novalidate
+(ngSubmit)="addReview()"
+[formGroup]="addReviewForm" #formDir="ngForm"
+class="form-group padding10">
+<div class="form-group">
+   <label class="col-md-3 control-label" for="reviewer">Reviewer</label>
+   <input
+      type="text"
+      class="col-md-3 form-control"
+      name="reviewer"
+      id="reviewer"
+      minlength="12"
+      placeholder="Reviewer"
+      formControlName="reviewer">
+  <div *ngIf="reviewer.invalid && (reviewer.dirty || reviewer.touched)"
+       class="alert alert-danger col-md-6">
+    
+    <div *ngIf="reviewer.hasError('required')">
+      reviewer is required.
+    </div>
+    <div *ngIf="reviewer.hasError('minlength')">
+      reviewer name must be at least 12 characters long.
+    </div>
+  
+  </div>
+  
+  
+</div>
+<div class="form-group">
+   <label class="col-md-3 control-label" for="rating">Rating</label>
+   <input
+      type="number"
+      class="col-md-3 form-control"
+      name="rating"
+      id="rating"
+      min="1"
+      max="5"
+      placeholder="Rating"
+      formControlName="rating">
+  <div *ngIf="rating.invalid && (rating.dirty || rating.touched)"
+       class="alert alert-danger col-md-3">
+    
+    <div *ngIf="rating.hasError('required')">
+      rating is required.
+    </div>
+    <div *ngIf="rating.hasError('min')|| rating.hasError('max')">
+      rating must be between 1 and 5.
+    </div>
+  
+  </div>
+  
+  
+  
+  
+</div>
+<div class="form-group">
+   <label for="reviewdescription" class="col-md-3 control-label">Review</label>
+   <textarea
+      class="col-md-3 form-control"
+      name="reviewdescription"
+      maxlength="50"
+      id="reviewdescription"
+      cols="30"
+      rows="10"
+      min
+      placeholder="Review description"
+      formControlName="reviewdescription">
+   </textarea>
+  
+  <div *ngIf="reviewdescription.invalid && (reviewdescription.dirty || reviewdescription.touched)"
+       class="alert alert-danger col-md-3">
+    
+    <div *ngIf="reviewdescription.hasError('required')">
+      Review description is required.
+    </div>
+    <div *ngIf="reviewdescription.hasError('maxlength')">
+      Review description max characters is 50.
+    </div>
+  
+  </div>
+  
+</div>
+<div class="form-group">
+   <div class="col-md-4 col-md-offset-2">
+      <span>
+      </span>
+      <span>
+      </span>
+   </div>
+</div>
+<button class="btn btn-primary" type="submit" >
+Submit
+</button>
+</form>
