@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0-rc.1.
 ## clone this repo
-git clone https://github.com/jeff-mccommas/Angular-Mean-Hotels-App.git
+git clone https://github.com/jeff-mccommas/angular-4-Hotel-listings.git
 ## install dependancies
 npm install
 ## build the project
