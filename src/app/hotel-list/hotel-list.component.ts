@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-hotel-list',
   templateUrl: './hotel-list.component.html',
-  styleUrls: ['./hotel-list.component.css'],
+  // styleUrls: ['./hotel-list.component.css'],
   providers: [DataService]
 })
 export class HotelListComponent implements OnInit {

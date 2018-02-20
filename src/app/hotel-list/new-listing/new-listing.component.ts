@@ -7,7 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 @Component({
   selector: 'app-new-listing',
   templateUrl: './new-listing.component.html',
-  styleUrls: ['./new-listing.component.css']
+  // styleUrls: ['./new-listing.component.css']
 })
 export class NewListingComponent implements OnInit {
   hotelListingForm: FormGroup

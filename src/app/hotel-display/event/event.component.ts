@@ -6,7 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.css'],
+  // styleUrls: ['./event.component.css'],
   providers: [DataService]
 })
 export class EventComponent implements OnInit {
